@@ -42,3 +42,5 @@ colors:
     magenta:  '#957BBE'
     cyan:     '#3D97E2'
     white:    '#BABABA'
+
+    # background_opacity: 0
