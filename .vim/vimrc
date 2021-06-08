@@ -1,6 +1,8 @@
 set relativenumber
 set number
 set updatetime=500
+set tabstop=4 shiftwidth=4 expandtab smarttab
+set autoindent smartindent
 
 " Plugins
 call plug#begin('~/.vim/extensions')
@@ -23,6 +25,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'honza/vim-snippets'
 Plug 'mattn/emmet-vim'
+Plug 'mhinz/vim-startify'
+Plug 'editorconfig/editorconfig-vim'
 
 " enable ncm2 for all buffers
 " autocmd BufEnter * call ncm2#enable_for_buffer()
@@ -45,7 +49,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#show_tabs = 1
 let g:airline#extensions#tabline#show_tab_count = 0
-let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#close_symbol = '×'
 let g:airline#extensions#tabline#show_close_button = 0
@@ -89,8 +93,15 @@ map <C-e>e :NERDTreeToggle<CR>
 map <C-e>f :NERDTreeFind<CR>
 map <C-p>f :Files<CR>
 map <C-p>g :GFiles<CR>
-nmap ., :w<CR>
+map <C-p>h :History<CR>
+map <C-p>b :Buffers<CR>
+map <C-p>r :Rg<CR>
+map <C-p>s :BLines<CR>
+map <C-p>l :Lines<CR>
+nmap ,. :w<CR>
 nmap ,, :bo terminal<CR>
+nmap ,c :noh<cr>
+
 " GitGutter
 nmap ghp <Plug>(GitGutterPreviewHunk)
 nmap ghs <Plug>(GitGutterStageHunk)
@@ -111,4 +122,23 @@ nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 nmap <leader>- <Plug>AirlineSelectPrevTab
 nmap <leader>+ <Plug>AirlineSelectNextTab
+nmap <leader>bd :bd<cr>
+nmap <leader>bn :bn<cr>
+nmap <leader>bp :bp<cr>
+
+" In insert or command mode, move normally by using Ctrl
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+cnoremap <C-h> <Left>
+cnoremap <C-j> <Down>
+cnoremap <C-k> <Up>
+cnoremap <C-l> <Right>
+
+" Clipboard
+map <Leader>y "+y<CR>
+map <Leader>p "+p<CR>
+
 source ~/.vim/config/coc.vim
+
